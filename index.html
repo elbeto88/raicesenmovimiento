@@ -88,6 +88,16 @@
       background: var(--brand-green);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
+/* Logo UV en la esquina superior izquierda */
+    .logo-uv {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      height: 60px; /* Tamaño adaptativo adecuado para un logo de esquina */
+      width: auto;
+      object-fit: contain;
+    }
+    
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
       height: 4rem;
@@ -688,10 +698,13 @@
     <header class="header">
       <div class="container header-inner">
         <a href="#hero" class="brand" aria-label="Raíces en Movimiento, inicio">
+    
           <img src="logo-uv.png" alt="Logo Universidad Veracruzana" class="brand-logo" />
+  
+      
           <span class="brand-text">
             <span class="brand-title">Raíces en Movimiento</span>
-            <span class="brand-sub">Veracruz · México</span>
+            <span class="brand-sub">Enseñanza de las artes UV</span>
           </span>
         </a>
         <nav class="nav" aria-label="Navegación principal">
