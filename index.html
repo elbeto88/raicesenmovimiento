@@ -88,16 +88,17 @@
       background: var(--brand-green);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
-/* Logo UV en la esquina superior izquierda */
-    .logo-uv {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      height: 60px; /* Tamaño adaptativo adecuado para un logo de esquina */
-      width: auto;
-      object-fit: contain;
-    }
+<!--logosvg--> 
     
+.brand-logo {
+  width: 3.5rem; height: 3.5rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));  /* sombra para que resalte */
+  transition: transform 0.2s, filter 0.2s;
+}
+.brand-logo svg { width: 100%; height: 100%; display: block; }
+.brand:hover .brand-logo { transform: scale(1.05); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45)); }
+       
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
       height: 4rem;
