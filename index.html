@@ -99,8 +99,8 @@
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
       transition: transform 0.2s, filter 0.2s;
     }
-
-        .brand:hover .brand-logo { transform: scale(1.05); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45)); }
+    .brand-logo svg { width: 100%; height: 100%; display: block; }
+    .brand:hover .brand-logo { transform: scale(1.05); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45)); }
     .brand-text { display: flex; flex-direction: column; line-height: 1; }
     .brand-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--white); }
     .brand-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.85); font-weight: 500; margin-top: 2px; }
@@ -1084,7 +1084,7 @@
     "name": "El Totonacapan",
     "subtitle": "Región Norte-Centro",
     "position": "Norte-Centro del estado",
-    "color": "#5a5a5a",
+    "color": "#1c1917",
     "colorSoft": "#ededed",
     "labelX": 558,
     "labelY": 745,
@@ -1126,7 +1126,7 @@
     "name": "Las Altas Montañas",
     "subtitle": "Región Centro",
     "position": "Centro del estado",
-    "color": "#414141",
+    "color": "#676767",
     "colorSoft": "#f5f5f5",
     "labelX": 701,
     "labelY": 1148,
@@ -1168,7 +1168,7 @@
     "name": "El Sotavento",
     "subtitle": "Región Centro-Sur",
     "position": "Centro-Sur del estado",
-    "color": "#7d7d7d",
+    "color": "#1c1917",
     "colorSoft": "#ededed",
     "labelX": 1018,
     "labelY": 1431,
@@ -1210,7 +1210,7 @@
     "name": "Región de los Tuxtlas",
     "subtitle": "Región Sur",
     "position": "Sur del estado",
-    "color": "#2e2e2e",
+    "color": "#676767",
     "colorSoft": "#dcdcdc",
     "labelX": 1402,
     "labelY": 1529,
@@ -1249,7 +1249,7 @@
   }
 ];
     const REGION_CLASS_MAP = {"huasteca": ["cls-16"], "totonacapan": ["cls-8"], "altas-montanas": ["cls-43"], "sotavento": ["cls-1"], "tuxtlas": ["cls-36", "cls-53"]};
-    const REGION_BASE_FILL = {"huasteca": "#676767", "totonacapan": "#5a5a5a", "altas-montanas": "#414141", "sotavento": "#7d7d7d", "tuxtlas": "#2e2e2e"};
+    const REGION_BASE_FILL = {"huasteca": "#676767", "totonacapan": "#1c1917", "altas-montanas": "#676767", "sotavento": "#1c1917", "tuxtlas": "#676767"};
     const DECORATIVE_FILL = "#f5e6d3";
     const DECORATIVE_STROKE = "#fef3c7";
 
@@ -1368,17 +1368,17 @@
         circleOuter.classList.add('outer');
         circleOuter.setAttribute('cx', r.labelX);
         circleOuter.setAttribute('cy', r.labelY);
-        circleOuter.setAttribute('r', '128'); // x4 (32 → 128)
+        circleOuter.setAttribute('r', '32'); // x1 (tamaño original)
         circleOuter.setAttribute('fill', r.color);
         circleOuter.setAttribute('stroke', '#fff');
-        circleOuter.setAttribute('stroke-width', '12'); // x4 (3 → 12)
+        circleOuter.setAttribute('stroke-width', '3'); // x1 (3 original)
         circleOuter.style.filter = 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))';
         circleOuter.style.transition = 'r 0.3s, stroke-width 0.3s';
 
         const circleInner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circleInner.setAttribute('cx', r.labelX);
         circleInner.setAttribute('cy', r.labelY);
-        circleInner.setAttribute('r', '24'); // x4 (6 → 24)
+        circleInner.setAttribute('r', '6'); // x1 (6 original)
         circleInner.setAttribute('fill', '#fff');
 
         const labelG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -1443,8 +1443,8 @@
         g.style.opacity = isDimmed ? '0.6' : '1';
         g.style.transition = 'opacity 0.3s';
         const circleOuter = g.querySelector('circle.outer');
-        circleOuter.setAttribute('r', isActive ? '168' : '128'); // x4 (42→168, 32→128)
-        circleOuter.setAttribute('stroke-width', isActive ? '20' : '12'); // x4 (5→20, 3→12)
+        circleOuter.setAttribute('r', isActive ? '42' : '32'); // x1 (42 activo, 32 normal)
+        circleOuter.setAttribute('stroke-width', isActive ? '5' : '3'); // x1 (5 activo, 3 normal)
         circleOuter.style.filter = isActive || isHovered
           ? 'drop-shadow(0 16px 40px rgba(0,0,0,0.55))'
           : 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))';
