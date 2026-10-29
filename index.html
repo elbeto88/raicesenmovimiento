@@ -743,13 +743,14 @@
       display: flex; align-items: center;
       gap: 0;
     }
-    .carousel-track {
-      display: flex;
+    .carousel-viewport {
       overflow: hidden;
-      scroll-behavior: smooth;
       flex: 1;
       border-radius: 1rem;
-      gap: 0;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
     }
     .carousel-slide {
       position: relative;
@@ -1032,6 +1033,7 @@
           <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Anterior">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
+          <div class="carousel-viewport">
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide">
               <img src="regiones/danza1.png" alt="Huapango - Son Huasteco" />
@@ -1065,6 +1067,7 @@
               <img src="regiones/danza8.png" alt="Danza del Tigre (Tecuanes)" />
               <div class="carousel-caption"><strong>Danza del Tigre (Tecuanes)</strong><br><span>Región Tuxtlas</span></div>
             </div>
+          </div>
           </div>
           <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Siguiente">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -1612,10 +1615,64 @@
       const prevBtn = document.getElementById('carouselPrev');
       const nextBtn = document.getElementById('carouselNext');
       const dotsContainer = document.getElementById('carouselDots');
-      if (!track) return;
+      const viewport = document.querySelector('.carousel-viewport');
+
+      console.log('%c[Carrusel] Iniciando setup...', 'color: #28AD56; font-weight: bold;');
+
+      if (!track) {
+        console.error('[Carrusel] ERROR: No se encontro #carouselTrack');
+        return;
+      }
+      if (!viewport) {
+        console.error('[Carrusel] ERROR: No se encontro .carousel-viewport');
+        return;
+      }
+
       const slides = track.querySelectorAll('.carousel-slide');
+      const imgs = track.querySelectorAll('img');
       const slideCount = slides.length;
       let currentIndex = 0;
+
+      console.log('[Carrusel] Slides encontrados:', slideCount);
+      console.log('[Carrusel] Imagenes encontradas:', imgs.length);
+
+      // Set explicit slide widths based on viewport width
+      function updateSlideWidths() {
+        const vpWidth = viewport.getBoundingClientRect().width;
+        console.log('[Carrusel] Viewport width:', vpWidth + 'px');
+        slides.forEach(slide => {
+          slide.style.minWidth = vpWidth + 'px';
+          slide.style.width = vpWidth + 'px';
+        });
+        track.style.width = (vpWidth * slideCount) + 'px';
+        console.log('[Carrusel] Track width set to:', (vpWidth * slideCount) + 'px');
+      }
+      updateSlideWidths();
+      window.addEventListener('resize', updateSlideWidths);
+
+      // Log de cada imagen
+      imgs.forEach((img, i) => {
+        const src = img.getAttribute('src');
+        console.log(`[Carrusel] Imagen ${i+1}: src="${src}"`);
+        img.addEventListener('load', () => {
+          console.log(`%c[Carrusel] Imagen ${i+1} CARGADA: ${img.naturalWidth}x${img.naturalHeight}`, 'color: green;');
+        });
+        img.addEventListener('error', () => {
+          console.error(`[Carrusel] Imagen ${i+1} ERROR al cargar: src="${src}"`);
+        });
+      });
+
+      // Log de dimensiones del viewport
+      setTimeout(() => {
+        const vpRect = viewport.getBoundingClientRect();
+        const trackRect = track.getBoundingClientRect();
+        const slide0Rect = slides[0] ? slides[0].getBoundingClientRect() : null;
+        console.log('[Carrusel] Viewport:', Math.round(vpRect.width) + 'x' + Math.round(vpRect.height), 'en x=' + Math.round(vpRect.x));
+        console.log('[Carrusel] Track:', Math.round(trackRect.width) + 'x' + Math.round(trackRect.height), 'en x=' + Math.round(trackRect.x));
+        console.log('[Carrusel] Slide 0:', slide0Rect ? Math.round(slide0Rect.width) + 'x' + Math.round(slide0Rect.height) : 'N/A');
+        console.log('[Carrusel] Viewport overflow:', getComputedStyle(viewport).overflow);
+        console.log('[Carrusel] Track transform:', getComputedStyle(track).transform);
+      }, 1000);
 
       // Crear dots
       slides.forEach((_, i) => {
@@ -1627,8 +1684,10 @@
 
       function goToSlide(index) {
         currentIndex = (index + slideCount) % slideCount;
-        const offset = currentIndex * 100;
-        track.style.transform = `translateX(-${offset}%)`;
+        const vpWidth = viewport.getBoundingClientRect().width;
+        const offset = currentIndex * vpWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+        console.log(`[Carrusel] goToSlide(${index}) -> translateX(-${offset}px) [slide ${currentIndex+1}/${slideCount}]`);
         updateDots();
       }
 
@@ -1658,6 +1717,8 @@
           else goToSlide(currentIndex - 1);
         }
       }, { passive: true });
+
+      console.log('%c[Carrusel] Setup completo!', 'color: #28AD56; font-weight: bold;');
     }
 
     // ====== MAP setup ======
