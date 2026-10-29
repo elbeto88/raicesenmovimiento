@@ -1650,16 +1650,28 @@
       updateSlideWidths();
       window.addEventListener('resize', updateSlideWidths);
 
-      // Log de cada imagen
+      // Log de cada imagen + forzar recarga
       imgs.forEach((img, i) => {
         const src = img.getAttribute('src');
         console.log(`[Carrusel] Imagen ${i+1}: src="${src}"`);
+
         img.addEventListener('load', () => {
           console.log(`%c[Carrusel] Imagen ${i+1} CARGADA: ${img.naturalWidth}x${img.naturalHeight}`, 'color: green;');
         });
         img.addEventListener('error', () => {
           console.error(`[Carrusel] Imagen ${i+1} ERROR al cargar: src="${src}"`);
+          // Reintentar carga
+          console.log(`[Carrusel] Reintentando carga de imagen ${i+1}...`);
+          setTimeout(() => {
+            img.src = src + '?retry=' + Date.now();
+          }, 500);
         });
+
+        // Forzar recarga si ya estaba complete pero sin naturalWidth
+        if (img.complete && img.naturalWidth === 0) {
+          console.warn(`[Carrusel] Imagen ${i+1} estaba completa pero sin datos, recargando...`);
+          img.src = src + '?retry=' + Date.now();
+        }
       });
 
       // Log de dimensiones del viewport
