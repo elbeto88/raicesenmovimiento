@@ -819,6 +819,30 @@
     }
     .spotify-embed iframe { display: block; }
 
+    /* ===== Bibliografía ===== */
+    .bibliografia { max-width: 48rem; margin: 0 auto; }
+    .biblio-cat {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+      color: var(--stone-900); margin-top: 2rem; margin-bottom: 1rem;
+      padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-mid);
+    }
+    .biblio-cat:first-child { margin-top: 0; }
+    .biblio-region { font-size: 0.875rem; font-weight: 400; color: var(--brand-green); }
+    .biblio-list { list-style: none; padding: 0; }
+    .biblio-list li {
+      font-size: 0.9rem; color: var(--stone-700); line-height: 1.7;
+      padding: 0.5rem 0 0.5rem 1.5rem; position: relative;
+      border-bottom: 1px solid #eee;
+    }
+    .biblio-list li:last-child { border-bottom: none; }
+    .biblio-list li::before {
+      content: '◆'; position: absolute; left: 0; top: 0.5rem;
+      color: var(--brand-green); font-size: 0.7rem;
+    }
+    .biblio-list em { color: var(--stone-900); }
+    .biblio-list a { color: var(--brand-blue); text-decoration: underline; word-break: break-all; }
+    .biblio-list a:hover { color: #13407a; }
+
     /* Iconos SVG */
     .icon { display: inline-block; vertical-align: middle; fill: currentColor; }
   </style>
@@ -839,6 +863,7 @@
           <a href="#mapa">Mapa</a>
           <a href="#regiones">Regiones</a>
           <a href="#cultura">Cultura</a>
+          <a href="#bibliografia">Bibliografía</a>
         </nav>
         <a href="#regiones" class="btn btn-primary hide-sm">Explorar bailes</a>
       </div>
@@ -1142,6 +1167,59 @@
       </div>
     </section>
 
+    <!-- BIBLIOGRAFIA -->
+    <section class="section" id="bibliografia" style="background: var(--stone-50);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Fuentes académicas</span>
+          <h2 class="section-title">Bibliografía</h2>
+          <p class="section-text">
+            Obras de carácter general y regional sobre las danzas, músicas y
+            tradiciones del estado de Veracruz.
+          </p>
+        </div>
+
+        <div class="bibliografia">
+
+          <h3 class="biblio-cat">Obras de Carácter General y Regional</h3>
+          <ul class="biblio-list">
+            <li>Sánchez Álvarez, G. (2023). <em>Danzas veracruzanas como grafías de la memoria: Recuerdos de indios, moros, negros y cristianos</em>. En A. Alonso Navarrete &amp; G. Sánchez Álvarez (Coords.), Memoria y patrimonio: Imágenes y representaciones desde México y El Caribe (pp. 91–106). Universidad Autónoma Metropolitana. <a href="https://doi.org/10.24275/uama.7051.10034" target="_blank" rel="noopener">https://doi.org/10.24275/uama.7051.10034</a></li>
+            <li>Sevilla Villalobos, A. (1990). <em>Danza, cultura y clases sociales</em>. Instituto Nacional de Antropología e Historia. (Disponible en el repositorio digital del INAH)</li>
+            <li>Macías Sánchez, C. (2016). <em>La explosión del son y el fandango jarocho: músicas, versos y baile para el ritual</em> [Tesis de doctorado, Universidad Nacional Autónoma de México]. Repositorio de la UNAM. <a href="https://repositorio.unam.mx/contenidos/62027" target="_blank" rel="noopener">https://repositorio.unam.mx/contenidos/62027</a></li>
+          </ul>
+
+          <h3 class="biblio-cat">El Son Jarocho y el Fandango <span class="biblio-region">— Región del Sotavento</span></h3>
+          <ul class="biblio-list">
+            <li>Sheehy, D. E. (1979). <em>The "Son Jarocho": The history, style, and repertory of a changing Mexican musical tradition</em> [Tesis de doctorado, University of California, Los Angeles]. Semantic Scholar. <a href="https://api.semanticscholar.org/CorpusID:190335414" target="_blank" rel="noopener">https://api.semanticscholar.org/CorpusID:190335414</a></li>
+            <li>Hernández Dávila, C. A. (2020). <em>Son jarocho y fandango: Espacio comunitario, escenario del espectáculo, escenario de la comunidad</em> [Tesis de licenciatura, Escuela Nacional de Antropología e Historia]. Repositorio del INAH. <a href="https://repositorio.inah.gob.mx/" target="_blank" rel="noopener">https://repositorio.inah.gob.mx/</a></li>
+            <li>Pérez Montfort, R. (2007). <em>Fandango y son entre el campo y la ciudad, Veracruz-México, 1930-1990</em>. En Y. Juárez Hernández &amp; L. Bobadilla González (Coords.), Veracruz... Instituto de Investigaciones Histórico-Sociales, Universidad Veracruzana. (Consultar disponibilidad en el repositorio de la UV)</li>
+            <li>Rodríguez Zeferino, I. L. (2025). <em>Lírica jarocha, medio de construcción identitaria</em> [Tesis de licenciatura, Universidad Veracruzana]. Repositorio Institucional de la UV. <a href="https://www.uv.mx/" target="_blank" rel="noopener">https://www.uv.mx/</a></li>
+          </ul>
+
+          <h3 class="biblio-cat">El Huapango Huasteco <span class="biblio-region">— Región de la Huasteca</span></h3>
+          <ul class="biblio-list">
+            <li>Florencia Pulido, P. del C. (1991). <em>Crónica histórica del huapango huasteco veracruzano: Trovas, música, danza y tradiciones</em>. Gobierno del Estado de Veracruz, Secretaría de Educación y Cultura. (Catálogo de la Biblioteca de la UV)</li>
+            <li>Méndez Herrera, L. C. (2016). <em>Son huasteco en la sierra totonaca: Un análisis del entorno sonoro de la fiesta en Filomeno Mata, Veracruz</em> [Tesis de maestría, Centro de Investigaciones y Estudios Superiores en Antropología Social]. Repositorio Institucional del CIESAS. <a href="https://ciesas.repositorioinstitucional.mx/jspui/handle/1015/1094" target="_blank" rel="noopener">https://ciesas.repositorioinstitucional.mx/jspui/handle/1015/1094</a></li>
+            <li>Hernández Azuara, C. (2003). <em>Huapango: El son huasteco y sus instrumentos en los siglos XIX y XX</em>. CIESAS / Programa de Desarrollo Cultural de la Huasteca / El Colegio de San Luis. (Disponible en Google Books)</li>
+          </ul>
+
+          <h3 class="biblio-cat">La Danza de los Voladores y Danzas Totonacas <span class="biblio-region">— Región del Totonacapan</span></h3>
+          <ul class="biblio-list">
+            <li>Enríquez Andrade, H. M. (2021). <em>Las danzas totonacas de origen prehispánico en Papantla</em>. Instituto Nacional de Antropología e Historia. (Libro disponible en la red por el INAH)</li>
+            <li>Stresser-Péan, G. (2016). <em>La danza del Volador entre los indios de México y América Central</em> (M. Zamudio Vega, Trad.). Fondo de Cultura Económica. (Obra original publicada en 1937)</li>
+            <li>Contreras Vizcaíno, J. J., &amp; Ramírez Herrera, G. (2024). Los voladores de Papantla: persistencias coloniales y resistencias comunitarias en dos prácticas en México. <em>Antípoda. Revista de Antropología y Arqueología</em>, (57), 147–171. <a href="https://doi.org/10.7440/antipoda57.2024.07" target="_blank" rel="noopener">https://doi.org/10.7440/antipoda57.2024.07</a></li>
+            <li>López Cristóbal, R. M., Flores Guevara, R. S., Rodríguez Nava, L. X., &amp; Reynoso Triana, I. Y. (2025). <em>La Danza de los Voladores: Entre Patrimonio Cultural, Espectáculo y Mercantilización. Caso Etnográfico en Plan del Palmar, Papantla, Veracruz</em> [Tesis de licenciatura, Universidad Autónoma Metropolitana, Unidad Xochimilco]. Repositorio Institucional de la UAM-Xochimilco. <a href="https://repositorio.xoc.uam.mx/jspui/handle/123456789/53281" target="_blank" rel="noopener">https://repositorio.xoc.uam.mx/jspui/handle/123456789/53281</a></li>
+          </ul>
+
+          <h3 class="biblio-cat">La Danza de los Líceres <span class="biblio-region">— Región de Los Tuxtlas</span></h3>
+          <ul class="biblio-list">
+            <li>Diccionario Enciclopédico Veracruzano. (2017). <em>Líceres, danza de los</em>. Universidad Veracruzana. <a href="https://diccionariover.uv.mx/egvadmin/bin/view/enciclopedia/l%C3%ADceres,%20danza%20de%20los" target="_blank" rel="noopener">https://diccionariover.uv.mx/</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
@@ -1169,6 +1247,7 @@
               <li><a href="#mapa">Mapa interactivo</a></li>
               <li><a href="#regiones">Las 5 regiones</a></li>
               <li><a href="#cultura">Patrimonio mestizo</a></li>
+              <li><a href="#bibliografia">Bibliografía</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -3166,4 +3245,3 @@
   </script>
 </body>
 </html>
-
