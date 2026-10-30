@@ -729,15 +729,15 @@
 
     /* ===== Carrusel ===== */
     .carousel-section {
-      padding: 4rem 0;
-      background: #1a1a1a;
+      padding: 3rem 0;
+      background: #ffffff;
     }
-    .carousel-section .section-header { margin-bottom: 2.5rem; }
+    .carousel-section .section-header { margin-bottom: 2rem; }
     .carousel-section .section-badge {
-      background: rgba(40,173,86,0.15); border-color: var(--brand-green); color: #6ee79a;
+      background: rgba(40,173,86,0.1); border-color: var(--brand-green); color: var(--brand-green);
     }
-    .carousel-section .section-title { color: #fff; }
-    .carousel-section .section-text { color: #c0c0c0; }
+    .carousel-section .section-title { color: var(--stone-900); }
+    .carousel-section .section-text { color: var(--stone-600); }
     .carousel {
       position: relative;
       display: flex; align-items: center;
@@ -761,6 +761,8 @@
     .carousel-slide img {
       width: 100%;
       height: auto;
+      max-height: 400px;
+      object-fit: cover;
       display: block;
     }
     .carousel-btn {
@@ -801,15 +803,15 @@
 
     /* ===== Spotify ===== */
     .spotify-section {
-      padding: 4rem 0;
-      background: #1a1a1a;
+      padding: 3rem 0;
+      background: #ffffff;
     }
     .spotify-section .section-header { margin-bottom: 2rem; text-align: center; max-width: 48rem; margin-left: auto; margin-right: auto; }
     .spotify-section .section-badge {
-      background: rgba(40,173,86,0.15); border-color: var(--brand-green); color: #6ee79a;
+      background: rgba(40,173,86,0.1); border-color: var(--brand-green); color: var(--brand-green);
     }
-    .spotify-section .section-title { color: #fff; }
-    .spotify-section .section-text { color: #c0c0c0; }
+    .spotify-section .section-title { color: var(--stone-900); }
+    .spotify-section .section-text { color: var(--stone-600); }
     .spotify-embed {
       max-width: 800px; margin: 0 auto;
       border-radius: 12px; overflow: hidden;
